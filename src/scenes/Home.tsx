@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
-import axios from 'axios';
 import { Link } from "react-router-dom";
-
-
-const hostName = (process.env.NODE_ENV === 'development')
-  ? 'http://localhost:8090/'
-  : 'https://tracker-fcc.herokuapp.com/';
 
 
 class Home extends Component {
@@ -20,20 +13,6 @@ class Home extends Component {
     console.log(e.target.value);
   }
 
-  addUser = async (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-
-    const res = await axios({
-      method: 'post',
-      url: `${hostName}api/exercise/new-user`,
-      data: {
-        username: this.state.username,
-      }
-    });
-    console.log('------------', res.data);
-  };
-
-
   render() {
     return (
       <div className="Home">
@@ -44,7 +23,14 @@ class Home extends Component {
               <p><code>POST /api/exercise/new-user</code></p>
               <input id="uname" type="text" name="username" placeholder="username" onChange={this.fillUserName} />
               <nav>
-                <Link to="/api/exercise/new-user">
+                <Link
+                  to={{
+                    pathname: '/api/exercise/new-user',
+                    state: {
+                      username: this.state.username || '',
+                    }
+                  }}
+                >
                   <input type="submit" value="Submit" />
                 </Link>
               </nav>
