@@ -2,8 +2,6 @@ import { createStore, combineReducers } from 'redux';
 import { theReducer } from './reducers.js';
 
 export function configureStore(initialState = { username: 'emptyname' }) {
-  // console.log('-- -- -- reducers', reducers);
-
   const store = createStore(
     theReducer,
     initialState,
