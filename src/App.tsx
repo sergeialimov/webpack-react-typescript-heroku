@@ -9,7 +9,6 @@ function App() {
     <Router>
       <Route path="/" exact component={Home} />
       <Route path="/api/exercise/new-user" exact component={NewUser} />
-      {/* <Route path="/products/:id" component={Product} /> */}
     </Router>
   );
 }
