@@ -9,10 +9,7 @@ export const theReducer = (state = {}, action) => {
   }
 };
 
-
 export const createReducers = () => {
-  console.log('-- -- -- theReducer', theReducer);
-
   return combineReducers({
     theReducer,
   });
