@@ -1,9 +1,22 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 
 const submitForm = () => {
+  const hostName = (process.env.NODE_ENV === 'development')
+  ? 'http://localhost:8080/'
+  : 'https://tracker-fcc.herokuapp.com/';
+
   console.log('submit-form');
+  // const res = await axios({
+    //   method: 'post',
+    //   url: `${hostName}api/exercise/new-user`,
+    //   data: {
+    //     username,
+    //   }
+    // });
+    // console.log('------------', res.data);
 }
 
 const fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
