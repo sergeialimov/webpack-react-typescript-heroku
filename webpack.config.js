@@ -1,6 +1,6 @@
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.tsx'
   ],
   output: {
     path: __dirname,
