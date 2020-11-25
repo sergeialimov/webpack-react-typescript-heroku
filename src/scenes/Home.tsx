@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { NewUserForm } from './components';
+
+// const UserDispatch = React.createContext(null);
+
+interface HomeProps {
+  userData: string,
+};
+
+interface HomeDispatchProps {
+  putUserDataInStore(userData: string): {type: string, payload: string},
+}
 
 
-class Home extends Component {
-  state = { username: '' };
-
-  fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const username = e.target.value;
-    this.setState(() => ({
-      username,
-    }));
-    console.log(e.target.value);
+class Home extends Component<HomeProps & HomeDispatchProps> {
+  constructor(props: HomeProps & HomeDispatchProps) {
+    super(props);
   }
 
   render() {
@@ -18,23 +22,9 @@ class Home extends Component {
       <div className="Home">
         <div className="container">
           <h1>Exercise tracker</h1>
-            <form action="/api/exercise/new-user" method="post">
-              <h3>Create a New User</h3>
-              <p><code>POST /api/exercise/new-user</code></p>
-              <input id="uname" type="text" name="username" placeholder="username" onChange={this.fillUserName} />
-              <nav>
-                <Link
-                  to={{
-                    pathname: '/api/exercise/new-user',
-                    state: {
-                      username: this.state.username || '',
-                    }
-                  }}
-                >
-                  <input type="submit" value="Submit" />
-                </Link>
-              </nav>
-            </form>
+
+            <NewUserForm />
+
             <form action="/api/exercise/add" method="post">
               <h3>Add exercises</h3>
               <p><code>POST /api/exercise/add</code></p>
