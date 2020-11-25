@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-export const theReducer = (state = {}, action) => {
+export const userReducer = (action: any, state: {}) => {
   switch (action.type) {
     case 'PUT_USER_DATA':
       return action.userData;
@@ -9,8 +9,8 @@ export const theReducer = (state = {}, action) => {
   }
 };
 
-export const createReducers = () => {
-  return combineReducers({
-    theReducer,
-  });
-};
+// export const createReducers = () => {
+//   return combineReducers({
+//     userReducer,
+//   });
+// };
