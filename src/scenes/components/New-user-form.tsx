@@ -3,32 +3,33 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { hostName } from '../../config';
 
-const [ state, setState ] = useState<string>('');
-// const [ name, setName, setState ] = useState<string>('');
 
-
-const submitForm = async () => {
-  console.log('submit-form');
-  const username = 'tmp-name';
-
-  const res = await axios({
-      method: 'post',
-      url: `${hostName}api/exercise/new-user`,
-      data: {
-        username,
-      }
-    });
-  console.log('------------', res.data);
+interface Props {
 }
 
-const fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const name = e.target.value;
-  setState(name);
-  console.log('** name', name);
-  console.log('** state', state);
-}
+export const NewUserForm: React.FC<Props> = ({}) => {
+  const [ state, setState ] = useState<string>('');
 
-export const NewUserForm = () => {
+  const fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.value;
+    setState(name);
+    console.log('** name', name);
+    console.log('** state', state);
+  }
+
+  const submitForm = async () => {
+    console.log('submit-form');
+    // const username = 'tmp-name';
+    // const res = await axios({
+    //     method: 'post',
+    //     url: `${hostName}api/exercise/new-user`,
+    //     data: {
+    //       username,
+    //     }
+    //   });
+    // console.log('------------', res.data);
+  }
+
   return (
     <form action="/api/exercise/new-user" method="post">
       <h3>Create a New User</h3>
@@ -45,4 +46,4 @@ export const NewUserForm = () => {
       </nav>
     </form>
   )
-}
+};
