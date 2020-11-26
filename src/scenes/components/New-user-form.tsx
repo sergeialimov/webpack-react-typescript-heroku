@@ -8,17 +8,14 @@ interface Props {
 }
 
 export const NewUserForm: React.FC<Props> = ({}) => {
-  const [ state, setState ] = useState<string>('');
+  const [ name, setName ] = useState<string>('');
 
   const fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.value;
-    setState(name);
-    console.log('** name', name);
-    console.log('** state', state);
+    setName(e.target.value);
   }
 
   const submitForm = async () => {
-    console.log('submit-form');
+    console.log('** name', name);
     // const username = 'tmp-name';
     // const res = await axios({
     //     method: 'post',
@@ -31,19 +28,12 @@ export const NewUserForm: React.FC<Props> = ({}) => {
   }
 
   return (
-    <form action="/api/exercise/new-user" method="post">
+    <form>
+    {/* <form action="/api/exercise/new-user" method="post"> */}
       <h3>Create a New User</h3>
-      <p><code>POST /api/exercise/new-user</code></p>
+      {/* <p><code>POST /api/exercise/new-user</code></p> */}
       <input id="uname" type="text" name="username" placeholder="username" onChange={fillUserName} />
-      <nav>
-        <Link
-          to={{
-            pathname: '/api/exercise/new-user',
-          }}
-        >
-          <input type="submit" value="Submit" onClick={submitForm} />
-        </Link>
-      </nav>
+      <input type="submit" value="Submit" onClick={submitForm} />
     </form>
   )
 };
