@@ -12,10 +12,12 @@ export const NewUserForm: React.FC<Props> = ({}) => {
 
   const fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
+    // dispatch
   }
 
-  const submitForm = async () => {
+  const submitForm = async (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     console.log('** name', name);
+    e.preventDefault();
     // const username = 'tmp-name';
     // const res = await axios({
     //     method: 'post',
