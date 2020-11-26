@@ -1,30 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { hostName } from '../../config';
+
+const [ state, setState ] = useState<string>('');
+// const [ name, setName, setState ] = useState<string>('');
 
 
-const submitForm = () => {
-  const hostName = (process.env.NODE_ENV === 'development')
-  ? 'http://localhost:8080/'
-  : 'https://tracker-fcc.herokuapp.com/';
-
+const submitForm = async () => {
   console.log('submit-form');
-  // const res = await axios({
-    //   method: 'post',
-    //   url: `${hostName}api/exercise/new-user`,
-    //   data: {
-    //     username,
-    //   }
-    // });
-    // console.log('------------', res.data);
+  const username = 'tmp-name';
+
+  const res = await axios({
+      method: 'post',
+      url: `${hostName}api/exercise/new-user`,
+      data: {
+        username,
+      }
+    });
+  console.log('------------', res.data);
 }
 
 const fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const username = e.target.value;
-  // this.setState(() => ({
-  //   username,
-  // }));
-  console.log(e.target.value);
+  const name = e.target.value;
+  setState(name);
+  console.log('** name', name);
+  console.log('** state', state);
 }
 
 export const NewUserForm = () => {
