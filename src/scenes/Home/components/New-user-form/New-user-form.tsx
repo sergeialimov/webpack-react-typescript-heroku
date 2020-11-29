@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { hostName } from '../../../config';
+
+import { hostName } from '../../../../../config';
+import { saveUser } from './actions';
+import { store } from '../../../../store/store';
 
 
 interface Props {
-  saveUser: (name: string) => void,
 }
 
-export const NewUserForm: React.FC<Props> = (props) => {
+export const NewUserForm: React.FC<Props> = ({}) => {
   const [ name, setName ] = useState<string>('');
 
   const fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,8 +22,7 @@ export const NewUserForm: React.FC<Props> = (props) => {
   const submitForm = async (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     console.log('** name', name);
     e.preventDefault();
-    // dispatch
-    props.saveUser(name);
+    store.dispatch({ type: 'save_user', payload: name });
     // const username = 'tmp-name';
     // const res = await axios({
     //     method: 'post',
@@ -41,3 +44,10 @@ export const NewUserForm: React.FC<Props> = (props) => {
     </form>
   )
 };
+
+export default connect(
+  // mapStateToProps,
+  null,
+  // mapDispatchToProps,
+  { saveUser }
+)(NewUserForm);

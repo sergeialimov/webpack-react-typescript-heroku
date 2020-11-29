@@ -1,29 +1,18 @@
 import React, { Component } from 'react';
 import { NewUserForm, NewExerciseForm } from './components';
 
-// const UserDispatch = React.createContext(null);
 
-interface HomeProps {
-  userData: string,
-};
-
-interface HomeDispatchProps {
-  putUserDataInStore(userData: string): {type: string, payload: string},
-}
-
-
-class Home extends Component<HomeProps & HomeDispatchProps> {
-  constructor(props: HomeProps & HomeDispatchProps) {
-    super(props);
-  }
+class Home extends Component {
+  saveUser = () => {};
 
   render() {
     return (
       <div className="Home">
         <div className="container">
           <h1>Exercise tracker</h1>
-
-            <NewUserForm />
+            {/* <UserDispatch.Provider value }> */}
+              <NewUserForm />
+            {/* </UserDispatch.Provider> */}
 
             <NewExerciseForm />
 
