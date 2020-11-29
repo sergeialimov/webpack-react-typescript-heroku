@@ -1,5 +1,5 @@
 interface userReducer {
-  
+
 }
 
 export const userReducer = (state: {}, action: any) => {
