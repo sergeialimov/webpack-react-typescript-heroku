@@ -7,9 +7,10 @@ const initialState = {
   username: ''
 };
 
+
 export function configureStore() {
   const store = createStore(
-    userReducer,
+    userReducer as any,
     initialState,
     composeWithDevTools(
     ),
