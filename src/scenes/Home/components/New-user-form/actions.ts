@@ -1,5 +1,4 @@
-export const saveUser = (payload: any) => ({
+export const saveUser = (payload: string) => ({
   type: 'save_user',
   payload,
-  // payload: name,
 });
