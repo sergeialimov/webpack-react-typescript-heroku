@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -13,16 +12,15 @@ interface Props {
 }
 
 export const NewUserForm: React.FC<Props> = ({}) => {
-  const [ name, setName ] = useState<string>('');
+  const [ username, setName ] = useState<string>('');
 
   const fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   }
   
   const submitForm = async (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    console.log('** name', name);
-    e.preventDefault();
-    store.dispatch({ type: 'save_user', payload: name });
+    console.log('** name', username);
+    store.dispatch({ type: 'save_user', payload: username });
     // const username = 'tmp-name';
     // const res = await axios({
     //     method: 'post',
@@ -35,19 +33,20 @@ export const NewUserForm: React.FC<Props> = ({}) => {
   }
 
   return (
-    <form>
-    {/* <form action="/api/exercise/new-user" method="post"> */}
+    <form action="/api/exercise/new-user" method="post">
       <h3>Create a New User</h3>
-      {/* <p><code>POST /api/exercise/new-user</code></p> */}
+      <p><code>POST /api/exercise/new-user</code></p>
       <input id="uname" type="text" name="username" placeholder="username" onChange={fillUserName} />
-      <input type="submit" value="Submit" onClick={submitForm} />
+      <nav>
+        <Link to={{pathname: "/api/exercise/new-user"}}>
+          <input type="submit" value="Submit" onClick={submitForm} />
+        </Link>
+      </nav>
     </form>
   )
 };
 
 export default connect(
-  // mapStateToProps,
   null,
-  // mapDispatchToProps,
   { saveUser }
 )(NewUserForm);
