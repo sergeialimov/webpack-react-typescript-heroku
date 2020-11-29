@@ -7,7 +7,8 @@
     "node": "12.16.x"
   },
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open",
+    "dev": "webpack-dev-server --mode development",
+    "dev-open": "webpack-dev-server --mode development --open",
     "start": "node server.js",
     "heroku-postbuild": "webpack -p"
   },
