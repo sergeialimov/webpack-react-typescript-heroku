@@ -1,3 +1,5 @@
-import Home from './Home';
+import Home from './Home/Home';
+import NewUser from './New-user/New-user';
 
-export default { Home };
+export { Home as Home };
+export { NewUser as NewUser };

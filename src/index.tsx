@@ -2,13 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 
-import AppContainer from './AppContainer';
-import { store } from './store.js';
+// import AppContainer from './store/AppContainer';
+import App from './App-router';
+import { store } from './store/store';
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppContainer />
+    <App />
+    {/* <AppContainer /> */}
   </Provider>,
   document.getElementById("index")
 );
