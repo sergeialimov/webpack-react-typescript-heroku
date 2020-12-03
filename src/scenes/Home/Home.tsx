@@ -10,12 +10,8 @@ class Home extends Component {
       <div className="Home">
         <div className="container">
           <h1>Exercise tracker</h1>
-            {/* <UserDispatch.Provider value }> */}
-              <NewUserForm />
-            {/* </UserDispatch.Provider> */}
-
+            <NewUserForm />
             <NewExerciseForm />
-
             <p>
               <strong>GET users's exercise log: </strong>
               <code>GET /api/exercise/log?{'userId'}[&amp;from][&amp;to][&amp;limit]`</code>
