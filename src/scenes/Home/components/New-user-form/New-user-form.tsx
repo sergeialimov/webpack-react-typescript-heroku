@@ -19,24 +19,28 @@ export const NewUserForm: React.FC<Props> = ({}) => {
   }
   
   const submitForm = async (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    console.log('** name', username);
-    store.dispatch({ type: 'save_user', payload: username });
-    // const username = 'tmp-name';
-    // const res = await axios({
-    //     method: 'post',
-    //     url: `${hostName}api/exercise/new-user`,
-    //     data: {
-    //       username,
-    //     }
-    //   });
-    // console.log('------------', res.data);
+    const res = await axios({
+      method: 'post',
+      url: `${hostName}api/exercise/new-user`,
+        data: {
+          username,
+        }
+      });
+
+    store.dispatch({
+      type: 'save_user',
+      payload: {
+        username: res.data.username,
+        id: res.data._id,
+      }
+    });
   }
 
   return (
     <form action="/api/exercise/new-user" method="post">
       <h3>Create a New User</h3>
       <p><code>POST /api/exercise/new-user</code></p>
-      <input id="uname" type="text" name="username" placeholder="username" onChange={fillUserName} />
+      <input autoFocus id="uname" type="text" name="username" placeholder="username" onChange={fillUserName} />
       <nav>
         <Link to={{pathname: "/api/exercise/new-user"}}>
           <input type="submit" value="Submit" onClick={submitForm} />
