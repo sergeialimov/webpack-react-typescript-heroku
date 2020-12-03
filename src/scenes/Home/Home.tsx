@@ -3,8 +3,6 @@ import { NewUserForm, NewExerciseForm } from './components';
 
 
 class Home extends Component {
-  saveUser = () => {};
-
   render() {
     return (
       <div className="Home">
