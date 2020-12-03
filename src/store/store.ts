@@ -4,7 +4,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 const initialState = {
-  username: ''
+  user: {
+    'name': '',
+    'id': 0,
+  },
+  exercises: [],
 };
 
 
