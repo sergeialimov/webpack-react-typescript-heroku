@@ -30,7 +30,7 @@ export const NewUserForm: React.FC<Props> = ({}) => {
     store.dispatch({
       type: 'save_user',
       payload: {
-        username: res.data.username,
+        name: res.data.username,
         id: res.data._id,
       }
     });
