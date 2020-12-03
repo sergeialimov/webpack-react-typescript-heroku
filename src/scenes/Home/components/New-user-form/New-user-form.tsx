@@ -37,7 +37,7 @@ export const NewUserForm: React.FC<Props> = ({}) => {
   }
 
   return (
-    <form action="/api/exercise/new-user" method="post">
+    <form>
       <h3>Create a New User</h3>
       <p><code>POST /api/exercise/new-user</code></p>
       <input autoFocus id="uname" type="text" name="username" placeholder="username" onChange={fillUserName} />
