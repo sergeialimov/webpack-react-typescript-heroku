@@ -19,6 +19,7 @@ export const NewUserForm: React.FC<Props> = ({}) => {
   }
   
   const submitForm = async (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    e.preventDefault();
     const res = await axios({
       method: 'post',
       url: `${hostName}api/exercise/new-user`,
