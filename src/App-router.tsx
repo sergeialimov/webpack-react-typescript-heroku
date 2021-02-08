@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Home from './scenes/Home/Home';
-import { NewUser } from './scenes/New-user/New-user';
+import { Home, NewUser } from './scenes';
 
 
 function App() {
