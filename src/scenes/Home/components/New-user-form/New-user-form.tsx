@@ -23,10 +23,10 @@ export const NewUserForm: React.FC<Props> = ({}) => {
     const res = await axios({
       method: 'post',
       url: `${hostName}api/exercise/new-user`,
-        data: {
-          username,
-        }
-      });
+      data: {
+        username,
+      }
+    });
 
     store.dispatch({
       type: 'save_user',
